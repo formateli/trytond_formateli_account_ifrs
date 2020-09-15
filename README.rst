@@ -1,7 +1,7 @@
 IFRS Account
 ############
 
-Implementation of the International Financial Reporting Standards (IFRS) accounting for Triton
+Implementation of the International Financial Reporting Standards (IFRS) accounting for Tryton.
 
 License
 -------
