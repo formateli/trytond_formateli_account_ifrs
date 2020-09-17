@@ -1,0 +1,1283 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <!-- Account Type Template -->
+
+        <record id="type_ifrs_es" model="account.account.type.template">
+            
+            <field name="name">NIIF Plantilla Tipos de Cuenta</field>
+            <field name="sequence" eval="0"/>
+            <field name="statement" eval="None"/>
+        </record>
+        <record id="type_ifrs_asset_es" model="account.account.type.template">
+            
+            <field name="name">Activo</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_current_asset_es" model="account.account.type.template">
+            
+            <field name="name">Activos Corrientes</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_asset_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_cash_es" model="account.account.type.template">
+            
+            <field name="name">Efectivo y Equivalente de Efectivo</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_current_asset_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_receivable_es" model="account.account.type.template">
+            
+            <field name="name">Cuentas por Cobrar</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_current_asset_es"/>
+            <field name="statement">balance</field>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="type_ifrs_inventory_es" model="account.account.type.template">
+            
+            <field name="name">Inventarios</field>
+            <field name="parent" ref="type_ifrs_current_asset_es"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">balance</field>
+            <field name="stock" eval="True"/>
+        </record>
+        <record id="type_ifrs_other_current_asset_es" model="account.account.type.template">
+            
+            <field name="name">Otros Activos Corrientes</field>
+            <field name="parent" ref="type_ifrs_current_asset_es"/>
+            <field name="sequence" eval="90"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_non_current_asset_es" model="account.account.type.template">
+            
+            <field name="name">Activos No Corrientes</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_asset_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_property_es" model="account.account.type.template">
+            
+            <field name="name">Propiedad, Planta y Equipo</field>
+            <field name="parent" ref="type_ifrs_non_current_asset_es"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_intangible_es" model="account.account.type.template">
+            
+            <field name="name">Activos Intangibles</field>
+            <field name="parent" ref="type_ifrs_non_current_asset_es"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_deferred_tax_es" model="account.account.type.template">
+            
+            <field name="name">Impuestos Diferidos</field>
+            <field name="parent" ref="type_ifrs_non_current_asset_es"/>
+            <field name="sequence" eval="30"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_liability_es" model="account.account.type.template">
+            
+            <field name="name">Pasivo</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_current_liability_es" model="account.account.type.template">
+            
+            <field name="name">Pasivos Corrientes</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_payable_es" model="account.account.type.template">
+            
+            <field name="name">Cuentas por Pagar</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_current_liability_es"/>
+            <field name="statement">balance</field>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="type_ifrs_in_advance_es" model="account.account.type.template">
+            
+            <field name="name">Pagado por Adelantado</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_current_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_tax_es" model="account.account.type.template">
+            
+            <field name="name">Impuestos</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="type_ifrs_current_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_provisions_es" model="account.account.type.template">
+            
+            <field name="name">Provisiones</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="type_ifrs_current_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_other_current_liability_es" model="account.account.type.template">
+            
+            <field name="name">Otros Pasivos Corrientes</field>
+            <field name="sequence" eval="90"/>
+            <field name="parent" ref="type_ifrs_current_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_non_current_liability_es" model="account.account.type.template">
+            
+            <field name="name">Pasivos No Corrientes</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_long_term_liability_es" model="account.account.type.template">
+            
+            <field name="name">Pasivos a Largo Plazo</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_non_current_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_other_non_current_liability_es" model="account.account.type.template">
+            
+            <field name="name">Otros Pasivos No Corrientes</field>
+            <field name="sequence" eval="90"/>
+            <field name="parent" ref="type_ifrs_non_current_liability_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_equity_es" model="account.account.type.template">
+            
+            <field name="name">Patrimonio</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="type_ifrs_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_capital_es" model="account.account.type.template">
+            
+            <field name="name">Capital</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_equity_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_retained_profit_es" model="account.account.type.template">
+            
+            <field name="name">Ganancias (Pérdidas) Retenidas</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_equity_es"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="type_ifrs_profit_loss_es" model="account.account.type.template">
+            
+            <field name="name">Ganacias o Pérdidas del Periodo Actual</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="type_ifrs_equity_es"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_profit_before_tax_es" model="account.account.type.template">
+            
+            <field name="name">Ganancia (Pérdida) Antes de Impuesto</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_profit_loss_es"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_tax_income_es" model="account.account.type.template">
+            
+            <field name="name">Impuesto a los Ingresos</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_profit_loss_es"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_gross_profit_es" model="account.account.type.template">
+            
+            <field name="name">Ganancia Bruta</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_profit_before_tax_es"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_operating_income_es" model="account.account.type.template">
+            
+            <field name="name">Ingresos por Operación</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_gross_profit_es"/>
+            <field name="revenue" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_cost_of_sales_es" model="account.account.type.template">
+            
+            <field name="name">Costo de Venta</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_gross_profit_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_cost_of_sales_service_es" model="account.account.type.template">
+            
+            <field name="name">Servicios</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_cost_of_sales_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_cost_of_sales_stock_es" model="account.account.type.template">
+            
+            <field name="name">Inventario</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_cost_of_sales_es"/>
+            <field name="expense" eval="True"/>
+            <field name="stock" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_other_income_es" model="account.account.type.template">
+            
+            <field name="name">Otros Ingresos</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_profit_before_tax_es"/>
+            <field name="revenue" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_operating_expense_es" model="account.account.type.template">
+            
+            <field name="name">Gastos de Operación</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="type_ifrs_profit_before_tax_es"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_sale_expense_es" model="account.account.type.template">
+            
+            <field name="name">Gastos de Venta y Distribución</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="type_ifrs_operating_expense_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_administration_expenses_es" model="account.account.type.template">
+            
+            <field name="name">Gastos de Administración</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="type_ifrs_operating_expense_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_depreciation_expenses_es" model="account.account.type.template">
+            
+            <field name="name">Depreciación y Amortización</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="type_ifrs_operating_expense_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="type_ifrs_other_operating_expense_es" model="account.account.type.template">
+            
+            <field name="name">Otros Gastos de Operación</field>
+            <field name="sequence" eval="90"/>
+            <field name="parent" ref="type_ifrs_operating_expense_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+
+        <record id="type_ifrs_other_expense_es" model="account.account.type.template">
+            
+            <field name="name">Otros Gastos</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="type_ifrs_profit_before_tax_es"/>
+            <field name="expense" eval="True"/>
+            <field name="statement">income</field>
+        </record>
+
+        <!-- Account Template -->
+
+        <!-- Asset -->
+
+        <record id="chart_0_es" model="account.account.template">
+            <field name="code">0</field>
+            
+            <field name="name">NIIF Catálogo de Cuentas</field>
+            <field name="type" ref="type_ifrs_es"/>
+            <field name="closed" eval="True"/>
+        </record>
+        <record id="chart_1_es" model="account.account.template">
+            <field name="code">1</field>
+            
+            <field name="name">Activo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_11_es" model="account.account.template">
+            <field name="code">11</field>
+            
+            <field name="name">Activos Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1_es"/>
+        </record>
+        <record id="chart_1110_es" model="account.account.template">
+            <field name="code">1110</field>
+            
+            <field name="name">Efectivo y Equivalente de Efectivo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_11_es"/>
+        </record>
+        <record id="chart_111010_es" model="account.account.template">
+            <field name="code">111010</field>
+            
+            <field name="name">Caja y Bancos</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1110_es"/>
+        </record>
+        <record id="chart_11101010_es" model="account.account.template">
+            <field name="code">11101010</field>
+            
+            <field name="name">Caja</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_111010_es"/>
+        </record>
+        <record id="chart_1110101010_es" model="account.account.template">
+            <field name="code">1110101010</field>
+            
+            <field name="name">Caja Principal</field>
+            <field name="type" ref="type_ifrs_cash_es"/>
+            <field name="parent" ref="chart_11101010_es"/>
+        </record>
+        <record id="chart_11101020_es" model="account.account.template">
+            <field name="code">11101020</field>
+            
+            <field name="name">Banco</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_111010_es"/>
+        </record>
+        <record id="chart_1110102010_es" model="account.account.template">
+            <field name="code">1110102010</field>
+            
+            <field name="name">Banco Principal</field>
+            <field name="type" ref="type_ifrs_cash_es"/>
+            <field name="parent" ref="chart_11101020_es"/>
+        </record>
+        <record id="chart_111020_es" model="account.account.template">
+            <field name="code">111020</field>
+            
+            <field name="name">Equivalente de Efectivo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1110_es"/>
+        </record>
+        <record id="chart_11102010_es" model="account.account.template">
+            <field name="code">11102010</field>
+            
+            <field name="name">Depósitos a Corto Plazo</field>
+            <field name="type" ref="type_ifrs_cash_es"/>
+            <field name="parent" ref="chart_111020_es"/>
+        </record>
+        <record id="chart_11102020_es" model="account.account.template">
+            <field name="code">11102020</field>
+            
+            <field name="name">Inversiones a Costo Plazo</field>
+            <field name="type" ref="type_ifrs_cash_es"/>
+            <field name="parent" ref="chart_111020_es"/>
+        </record>
+        <record id="chart_11102030_es" model="account.account.template">
+            <field name="code">11102030</field>
+            
+            <field name="name">Otros Arreglos Bancarios</field>
+            <field name="type" ref="type_ifrs_cash_es"/>
+            <field name="parent" ref="chart_111020_es"/>
+        </record>
+        <record id="chart_11102090_es" model="account.account.template">
+            <field name="code">11102090</field>
+            
+            <field name="name">Otros Equivalente de Efectivo</field>
+            <field name="type" ref="type_ifrs_cash_es"/>
+            <field name="parent" ref="chart_111020_es"/>
+        </record>
+        <record id="chart_1120_es" model="account.account.template">
+            <field name="code">1120</field>
+            
+            <field name="name">Cuentas por Cobrar</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_11_es"/>
+        </record>
+        <record id="chart_112010_es" model="account.account.template">
+            <field name="code">112010</field>
+            
+            <field name="name">Cuentas por Cobrar Comerciales</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1120_es"/>
+        </record>
+        <record id="account_receivable_es" model="account.account.template">
+            <field name="code">11201010</field>
+            
+            <field name="name">Cuentas por Cobrar Comerciales</field>
+            <field name="type" ref="type_ifrs_receivable_es"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_112010_es"/>
+        </record>
+        <record id="chart_112090_es" model="account.account.template">
+            <field name="code">112090</field>
+            
+            <field name="name">Otras Cuentas por Cobrar</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1120_es"/>
+        </record>
+        <record id="chart_11209090_es" model="account.account.template">
+            <field name="code">11209090</field>
+            
+            <field name="name">Otras Cuentas por Cobrar</field>
+            <field name="type" ref="type_ifrs_receivable_es"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_112090_es"/>
+        </record>
+        <record id="chart_1130_es" model="account.account.template">
+            <field name="code">1130</field>
+            
+            <field name="name">Inventarios</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_11_es"/>
+        </record>
+        <record id="chart_113010_es" model="account.account.template">
+            <field name="code">113010</field>
+            
+            <field name="name">Materia Prima</field>
+            <field name="type" ref="type_ifrs_inventory_es"/>
+            <field name="parent" ref="chart_1130_es"/>
+        </record>
+        <record id="chart_113020_es" model="account.account.template">
+            <field name="code">113020</field>
+            
+            <field name="name">Mercancía</field>
+            <field name="type" ref="type_ifrs_inventory_es"/>
+            <field name="parent" ref="chart_1130_es"/>
+        </record>
+        <record id="chart_113030_es" model="account.account.template">
+            <field name="code">113030</field>
+            
+            <field name="name">Suminisros de Produccion</field>
+            <field name="type" ref="type_ifrs_inventory_es"/>
+            <field name="parent" ref="chart_1130_es"/>
+        </record>
+        <record id="chart_113040_es" model="account.account.template">
+            <field name="code">113040</field>
+            
+            <field name="name">Trabajo en Progreso</field>
+            <field name="type" ref="type_ifrs_inventory_es"/>
+            <field name="parent" ref="chart_1130_es"/>
+        </record>
+        <record id="chart_113050_es" model="account.account.template">
+            <field name="code">113050</field>
+            
+            <field name="name">Productos Terminados</field>
+            <field name="type" ref="type_ifrs_inventory_es"/>
+            <field name="parent" ref="chart_1130_es"/>
+        </record>
+        <record id="chart_113090_es" model="account.account.template">
+            <field name="code">113090</field>
+            
+            <field name="name">Otros Inventarios</field>
+            <field name="type" ref="type_ifrs_inventory_es"/>
+            <field name="parent" ref="chart_1130_es"/>
+        </record>
+        <record id="chart_1190_es" model="account.account.template">
+            <field name="code">1190</field>
+            
+            <field name="name">Otros Activos Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_11_es"/>
+        </record>
+        <record id="chart_119010_es" model="account.account.template">
+            <field name="code">119010</field>
+            
+            <field name="name">Gastos Pagados por Anticipado</field>
+            <field name="type" ref="type_ifrs_other_current_asset_es"/>
+            <field name="parent" ref="chart_1190_es"/>
+        </record>
+        <record id="chart_12_es" model="account.account.template">
+            <field name="code">12</field>
+            
+            <field name="name">Activos No Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1_es"/>
+        </record>
+        <record id="chart_1210_es" model="account.account.template">
+            <field name="code">1210</field>
+            
+            <field name="name">Propiedad, Planta y Equipo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_12_es"/>
+        </record>
+        <record id="chart_121010_es" model="account.account.template">
+            <field name="code">121010</field>
+            
+            <field name="name">Terreno</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121015_es" model="account.account.template">
+            <field name="code">121015</field>
+            
+            <field name="name">Edificios y Estructuras</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121020_es" model="account.account.template">
+            <field name="code">121020</field>
+            
+            <field name="name">Construcciones en Progreso</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121025_es" model="account.account.template">
+            <field name="code">121025</field>
+            
+            <field name="name">Maquinaria</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121030_es" model="account.account.template">
+            <field name="code">121030</field>
+            
+            <field name="name">Vehículos</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121035_es" model="account.account.template">
+            <field name="code">121035</field>
+            
+            <field name="name">Equipos de Oficina</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121040_es" model="account.account.template">
+            <field name="code">121040</field>
+            
+            <field name="name">Mobiliario y Enseres</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121045_es" model="account.account.template">
+            <field name="code">121045</field>
+            
+            <field name="name">Ajustes al Valor Razonable Acumulado</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_121050_es" model="account.account.template">
+            <field name="code">121050</field>
+            
+            <field name="name">Depreciación Acumulada</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_12105010_es" model="account.account.template">
+            <field name="code">12105010</field>
+            
+            <field name="name">Depreciación Acumulada Edificio</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_121050_es"/>
+        </record>
+        <record id="chart_12105020_es" model="account.account.template">
+            <field name="code">12105020</field>
+            
+            <field name="name">Depreciación Acumulada Maquinaria</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_121050_es"/>
+        </record>
+        <record id="chart_12105030_es" model="account.account.template">
+            <field name="code">12105030</field>
+            
+            <field name="name">Depreciación Acumulada Vehículos</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_121050_es"/>
+        </record>
+        <record id="chart_12105040_es" model="account.account.template">
+            <field name="code">12105040</field>
+            
+            <field name="name">Depreciación Acumulada Equipos de Oficina</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_121050_es"/>
+        </record>
+        <record id="chart_12105050_es" model="account.account.template">
+            <field name="code">12105050</field>
+            
+            <field name="name">Depreciación Acumulada Mobiliario y Enseres</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_121050_es"/>
+        </record>
+        <record id="chart_121090_es" model="account.account.template">
+            <field name="code">121090</field>
+            
+            <field name="name">Otros Propiedad, Planta y Equipo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_1210_es"/>
+        </record>
+        <record id="chart_12109090_es" model="account.account.template">
+            <field name="code">12109090</field>
+            
+            <field name="name">Otros Propiedad, Planta y Equipo</field>
+            <field name="type" ref="type_ifrs_property_es"/>
+            <field name="parent" ref="chart_121090_es"/>
+        </record>
+        <record id="chart_1220_es" model="account.account.template">
+            <field name="code">1220</field>
+            
+            <field name="name">Activos Intangibles</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_12_es"/>
+        </record>
+        <record id="chart_122090_es" model="account.account.template">
+            <field name="code">122090</field>
+            
+            <field name="name">Otros Activos Intangibles</field>
+            <field name="type" ref="type_ifrs_intangible_es"/>
+            <field name="parent" ref="chart_1220_es"/>
+        </record>
+        <record id="chart_1230_es" model="account.account.template">
+            <field name="code">1230</field>
+            
+            <field name="name">Impuestos Diferidos</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_12_es"/>
+        </record>
+        <record id="chart_123090_es" model="account.account.template">
+            <field name="code">123090</field>
+            
+            <field name="name">Otros Impuestos Diferidos</field>
+            <field name="type" ref="type_ifrs_deferred_tax_es"/>
+            <field name="parent" ref="chart_1230_es"/>
+        </record>
+
+        <!-- Liabilities -->
+
+        <record id="chart_2_es" model="account.account.template">
+            <field name="code">2</field>
+            
+            <field name="name">Pasivo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_21_es" model="account.account.template">
+            <field name="code">21</field>
+            
+            <field name="name">Pasivos Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_2_es"/>
+        </record>
+        <record id="chart_2110_es" model="account.account.template">
+            <field name="code">2110</field>
+            
+            <field name="name">Cuentas por Pagar</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_21_es"/>
+        </record>
+        <record id="chart_211010_es" model="account.account.template">
+            <field name="code">211010</field>
+            
+            <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_2110_es"/>
+        </record>
+        <record id="account_payable_es" model="account.account.template">
+            <field name="code">21101010</field>
+            
+            <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="type" ref="type_ifrs_payable_es"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_211010_es"/>
+        </record>
+        <record id="chart_211090_es" model="account.account.template">
+            <field name="code">211090</field>
+            
+            <field name="name">Otras Cuentas por Pagar</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_2110_es"/>
+        </record>
+        <record id="chart_21109090_es" model="account.account.template">
+            <field name="code">21109090</field>
+            
+            <field name="name">Otras Cuentas por Pagar</field>
+            <field name="type" ref="type_ifrs_payable_es"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_211090_es"/>
+        </record>
+        <record id="chart_2120_es" model="account.account.template">
+            <field name="code">2120</field>
+            
+            <field name="name">Cobrado por Anticipado</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_21_es"/>
+        </record>
+        <record id="chart_212010_es" model="account.account.template">
+            <field name="code">212010</field>
+            
+            <field name="name">Cobrado por Anticipado Comerciales</field>
+            <field name="type" ref="type_ifrs_in_advance_es"/>
+            <field name="parent" ref="chart_2120_es"/>
+        </record>
+        <record id="chart_212090_es" model="account.account.template">
+            <field name="code">212090</field>
+            
+            <field name="name">Otros Cobrado por Anticipado</field>
+            <field name="type" ref="type_ifrs_in_advance_es"/>
+            <field name="parent" ref="chart_2120_es"/>
+        </record>
+        <record id="chart_2130_es" model="account.account.template">
+            <field name="code">2130</field>
+            
+            <field name="name">Impuestos por Pagar</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_21_es"/>
+        </record>
+        <record id="chart_213010_es" model="account.account.template">
+            <field name="code">213010</field>
+            
+            <field name="name">Impuestos por Pagar</field>
+            <field name="type" ref="type_ifrs_tax_es"/>
+            <field name="parent" ref="chart_2130_es"/>
+        </record>
+        <record id="chart_2140_es" model="account.account.template">
+            <field name="code">2140</field>
+            
+            <field name="name">Provisiones</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_21_es"/>
+        </record>
+        <record id="chart_214010_es" model="account.account.template">
+            <field name="code">214010</field>
+            
+            <field name="name">Beneficios de Empleados</field>
+            <field name="type" ref="type_ifrs_provisions_es"/>
+            <field name="parent" ref="chart_2140_es"/>
+        </record>
+        <record id="chart_214020_es" model="account.account.template">
+            <field name="code">214020</field>
+            
+            <field name="name">Garantías</field>
+            <field name="type" ref="type_ifrs_provisions_es"/>
+            <field name="parent" ref="chart_2140_es"/>
+        </record>
+        <record id="chart_214030_es" model="account.account.template">
+            <field name="code">214030</field>
+            
+            <field name="name">Reestructuraciones</field>
+            <field name="type" ref="type_ifrs_provisions_es"/>
+            <field name="parent" ref="chart_2140_es"/>
+        </record>
+        <record id="chart_214090_es" model="account.account.template">
+            <field name="code">214090</field>
+            
+            <field name="name">Otras Provisiones</field>
+            <field name="type" ref="type_ifrs_provisions_es"/>
+            <field name="parent" ref="chart_2140_es"/>
+        </record>
+        <record id="chart_2190_es" model="account.account.template">
+            <field name="code">2190</field>
+            
+            <field name="name">Otros Pasivos Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_21_es"/>
+        </record>
+        <record id="chart_219010_es" model="account.account.template">
+            <field name="code">219010</field>
+            
+            <field name="name">Dividendos por Pagar</field>
+            <field name="type" ref="type_ifrs_other_current_liability_es"/>
+            <field name="parent" ref="chart_2190_es"/>
+        </record>
+        <record id="chart_22_es" model="account.account.template">
+            <field name="code">22</field>
+            
+            <field name="name">Pasivos No Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_2_es"/>
+        </record>
+        <record id="chart_2210_es" model="account.account.template">
+            <field name="code">2210</field>
+            
+            <field name="name">Pasivos a Largo Plazo</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_22_es"/>
+        </record>
+        <record id="chart_221010_es" model="account.account.template">
+            <field name="code">221010</field>
+            
+            <field name="name">Préstamos</field>
+            <field name="type" ref="type_ifrs_long_term_liability_es"/>
+            <field name="parent" ref="chart_2210_es"/>
+        </record>
+        <record id="chart_221020_es" model="account.account.template">
+            <field name="code">221020</field>
+            
+            <field name="name">Bonos</field>
+            <field name="type" ref="type_ifrs_long_term_liability_es"/>
+            <field name="parent" ref="chart_2210_es"/>
+        </record>
+        <record id="chart_221030_es" model="account.account.template">
+            <field name="code">221030</field>
+            
+            <field name="name">Pasivos por Arrendamiento</field>
+            <field name="type" ref="type_ifrs_long_term_liability_es"/>
+            <field name="parent" ref="chart_2210_es"/>
+        </record>
+        <record id="chart_221090_es" model="account.account.template">
+            <field name="code">221090</field>
+            
+            <field name="name">Otros Pasivos a Largo Plazo</field>
+            <field name="type" ref="type_ifrs_long_term_liability_es"/>
+            <field name="parent" ref="chart_2210_es"/>
+        </record>
+        <record id="chart_2290_es" model="account.account.template">
+            <field name="code">2290</field>
+            
+            <field name="name">Otros Pasivos No Corrientes</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_22_es"/>
+        </record>
+        <record id="chart_229090_es" model="account.account.template">
+            <field name="code">229090</field>
+            
+            <field name="name">Otros Pasivos No Corrientes</field>
+            <field name="type" ref="type_ifrs_other_non_current_liability_es"/>
+            <field name="parent" ref="chart_2290_es"/>
+        </record>
+
+        <!-- Equity -->
+
+        <record id="chart_3_es" model="account.account.template">
+            <field name="code">3</field>
+            
+            <field name="name">Patrimonio</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_310_es" model="account.account.template">
+            <field name="code">310</field>
+            
+            <field name="name">Capital</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_3_es"/>
+        </record>
+        <record id="chart_31010_es" model="account.account.template">
+            <field name="code">31010</field>
+            
+            <field name="name">Capital Social</field>
+            <field name="type" ref="type_ifrs_capital_es"/>
+            <field name="parent" ref="chart_310_es"/>
+        </record>
+        <record id="chart_320_es" model="account.account.template">
+            <field name="code">320</field>
+            
+            <field name="name">Ganancias (Pérdidas) Retenidas</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_3_es"/>
+        </record>
+        <record id="chart_32010_es" model="account.account.template">
+            <field name="code">32010</field>
+            
+            <field name="name">Ganancias (Pérdidas) Retenidas</field>
+            <field name="type" ref="type_ifrs_retained_profit_es"/>
+            <field name="parent" ref="chart_320_es"/>
+        </record>
+        <record id="chart_32020_es" model="account.account.template">
+            <field name="code">32020</field>
+            
+            <field name="name">Ajustes Años Anteriores</field>
+            <field name="type" ref="type_ifrs_retained_profit_es"/>
+            <field name="parent" ref="chart_320_es"/>
+        </record>
+
+        <!-- Operating Income -->
+
+        <record id="chart_4_es" model="account.account.template">
+            <field name="code">4</field>
+            
+            <field name="name">Ingresos por Operación</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_410_es" model="account.account.template">
+            <field name="code">410</field>
+            
+            <field name="name">Ventas</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_4_es"/>
+        </record>
+        <record id="account_revenue_es" model="account.account.template">
+            <field name="code">41010</field>
+            
+            <field name="name">Ventas</field>
+            <field name="type" ref="type_ifrs_operating_income_es"/>
+            <field name="parent" ref="chart_410_es"/>
+        </record>
+        <record id="chart_490_es" model="account.account.template">
+            <field name="code">490</field>
+            
+            <field name="name">Otros Ingresos por Operación</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_4_es"/>
+        </record>
+        <record id="chart_49090_es" model="account.account.template">
+            <field name="code">49090</field>
+            
+            <field name="name">Otros Ingresos por Operación</field>
+            <field name="type" ref="type_ifrs_operating_income_es"/>
+            <field name="parent" ref="chart_490_es"/>
+        </record>
+
+        <!-- Cost of Sales -->
+
+        <record id="chart_5_es" model="account.account.template">
+            <field name="code">5</field>
+            
+            <field name="name">Costo de Venta</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_510_es" model="account.account.template">
+            <field name="code">510</field>
+            
+            <field name="name">Servicios</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_5_es"/>
+        </record>
+        <record id="chart_51010_es" model="account.account.template">
+            <field name="code">51010</field>
+            
+            <field name="name">Servicios</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_service_es"/>
+            <field name="parent" ref="chart_510_es"/>
+        </record>
+        <record id="chart_520_es" model="account.account.template">
+            <field name="code">520</field>
+            
+            <field name="name">Inventarios</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_5_es"/>
+        </record>
+        <record id="chart_52010_es" model="account.account.template">
+            <field name="code">52010</field>
+            
+            <field name="name">Materia Prima</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_stock_es"/>
+            <field name="parent" ref="chart_520_es"/>
+        </record>
+        <record id="chart_52020_es" model="account.account.template">
+            <field name="code">52020</field>
+            
+            <field name="name">Mercancía</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_stock_es"/>
+            <field name="parent" ref="chart_520_es"/>
+        </record>
+        <record id="chart_52030_es" model="account.account.template">
+            <field name="code">52030</field>
+            
+            <field name="name">Suministros de Producción</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_stock_es"/>
+            <field name="parent" ref="chart_520_es"/>
+        </record>
+        <record id="chart_52040_es" model="account.account.template">
+            <field name="code">52040</field>
+            
+            <field name="name">Trabajo en Progreso</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_stock_es"/>
+            <field name="parent" ref="chart_520_es"/>
+        </record>
+        <record id="chart_52050_es" model="account.account.template">
+            <field name="code">52050</field>
+            
+            <field name="name">Productos Terminados</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_stock_es"/>
+            <field name="parent" ref="chart_520_es"/>
+        </record>
+        <record id="chart_52090_es" model="account.account.template">
+            <field name="code">52090</field>
+            
+            <field name="name">Otros Inventarios</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_stock_es"/>
+            <field name="parent" ref="chart_520_es"/>
+        </record>
+        <record id="chart_590_es" model="account.account.template">
+            <field name="code">590</field>
+            
+            <field name="name">Otros Costo de Venta</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_5_es"/>
+        </record>
+        <record id="account_expense_es" model="account.account.template">
+            <field name="code">59090</field>
+            
+            <field name="name">Otros Costo de Venta</field>
+            <field name="type" ref="type_ifrs_cost_of_sales_es"/>
+            <field name="parent" ref="chart_590_es"/>
+        </record>
+
+        <!-- Other Income -->
+
+        <record id="chart_6_es" model="account.account.template">
+            <field name="code">6</field>
+            
+            <field name="name">Otros Ingresos</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_610_es" model="account.account.template">
+            <field name="code">610</field>
+            
+            <field name="name">Ingresos Financieros</field>
+            <field name="type" ref="type_ifrs_other_income_es"/>
+            <field name="parent" ref="chart_6_es"/>
+        </record>
+        <record id="chart_620_es" model="account.account.template">
+            <field name="code">620</field>
+            
+            <field name="name">Ingresos por Intereses</field>
+            <field name="type" ref="type_ifrs_other_income_es"/>
+            <field name="parent" ref="chart_6_es"/>
+        </record>
+        <record id="chart_630_es" model="account.account.template">
+            <field name="code">630</field>
+            
+            <field name="name">Dividendos</field>
+            <field name="type" ref="type_ifrs_other_income_es"/>
+            <field name="parent" ref="chart_6_es"/>
+        </record>
+        <record id="chart_640_es" model="account.account.template">
+            <field name="code">640</field>
+            
+            <field name="name">Regalías</field>
+            <field name="type" ref="type_ifrs_other_income_es"/>
+            <field name="parent" ref="chart_6_es"/>
+        </record>
+        <record id="chart_650_es" model="account.account.template">
+            <field name="code">650</field>
+            
+            <field name="name">Licencias</field>
+            <field name="type" ref="type_ifrs_other_income_es"/>
+            <field name="parent" ref="chart_6_es"/>
+        </record>
+        <record id="chart_690_es" model="account.account.template">
+            <field name="code">690</field>
+            
+            <field name="name">Otros Ingresos</field>
+            <field name="type" ref="type_ifrs_other_income_es"/>
+            <field name="parent" ref="chart_6_es"/>
+        </record>
+
+        <!-- Operating Expense -->
+
+        <record id="chart_7_es" model="account.account.template">
+            <field name="code">7</field>
+            
+            <field name="name">Gastos por Operación</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_710_es" model="account.account.template">
+            <field name="code">710</field>
+            
+            <field name="name">Gastos de Venta y Distribución</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_7_es"/>
+        </record>
+        <record id="chart_71010_es" model="account.account.template">
+            <field name="code">71010</field>
+            
+            <field name="name">Gastos de Venta</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_710_es"/>
+        </record>
+        <record id="chart_7101010_es" model="account.account.template">
+            <field name="code">7101010</field>
+            
+            <field name="name">Comisiones por Venta</field>
+            <field name="type" ref="type_ifrs_sale_expense_es"/>
+            <field name="parent" ref="chart_71010_es"/>
+        </record>
+        <record id="chart_7101020_es" model="account.account.template">
+            <field name="code">7101020</field>
+            
+            <field name="name">Publicidad y Mercadeo</field>
+            <field name="type" ref="type_ifrs_sale_expense_es"/>
+            <field name="parent" ref="chart_71010_es"/>
+        </record>
+        <record id="chart_7101090_es" model="account.account.template">
+            <field name="code">7101090</field>
+            
+            <field name="name">Otros Gastos de Venta</field>
+            <field name="type" ref="type_ifrs_sale_expense_es"/>
+            <field name="parent" ref="chart_71010_es"/>
+        </record>
+        <record id="chart_71020_es" model="account.account.template">
+            <field name="code">71020</field>
+            
+            <field name="name">Gatos de Distribución</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_710_es"/>
+        </record>
+        <record id="chart_7102010_es" model="account.account.template">
+            <field name="code">7102010</field>
+            
+            <field name="name">Gastos de Transporte</field>
+            <field name="type" ref="type_ifrs_sale_expense_es"/>
+            <field name="parent" ref="chart_71020_es"/>
+        </record>
+        <record id="chart_7102020_es" model="account.account.template">
+            <field name="code">7102020</field>
+            
+            <field name="name">Gastos de Almacenamiento</field>
+            <field name="type" ref="type_ifrs_sale_expense_es"/>
+            <field name="parent" ref="chart_71020_es"/>
+        </record>
+        <record id="chart_7102090_es" model="account.account.template">
+            <field name="code">7102090</field>
+            
+            <field name="name">Otros Gastos de Distribución</field>
+            <field name="type" ref="type_ifrs_sale_expense_es"/>
+            <field name="parent" ref="chart_71020_es"/>
+        </record>
+        <record id="chart_720_es" model="account.account.template">
+            <field name="code">720</field>
+            
+            <field name="name">Gastos de Administración</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_7_es"/>
+        </record>
+        <record id="chart_72010_es" model="account.account.template">
+            <field name="code">72010</field>
+            
+            <field name="name">Gastos de Empleados</field>
+            <field name="type" ref="type_ifrs_administration_expenses_es"/>
+            <field name="parent" ref="chart_720_es"/>
+        </record>
+        <record id="chart_72020_es" model="account.account.template">
+            <field name="code">72020</field>
+            
+            <field name="name">Alquiler de Oficina</field>
+            <field name="type" ref="type_ifrs_administration_expenses_es"/>
+            <field name="parent" ref="chart_720_es"/>
+        </record>
+        <record id="chart_72030_es" model="account.account.template">
+            <field name="code">72030</field>
+            
+            <field name="name">Electricidad</field>
+            <field name="type" ref="type_ifrs_administration_expenses_es"/>
+            <field name="parent" ref="chart_720_es"/>
+        </record>
+        <record id="chart_72040_es" model="account.account.template">
+            <field name="code">72040</field>
+            
+            <field name="name">Telefonía</field>
+            <field name="type" ref="type_ifrs_administration_expenses_es"/>
+            <field name="parent" ref="chart_720_es"/>
+        </record>
+        <record id="chart_72090_es" model="account.account.template">
+            <field name="code">72090</field>
+            
+            <field name="name">Otros Gastos de Administración</field>
+            <field name="type" ref="type_ifrs_administration_expenses_es"/>
+            <field name="parent" ref="chart_720_es"/>
+        </record>
+        <record id="chart_730_es" model="account.account.template">
+            <field name="code">730</field>
+            
+            <field name="name">Depreciación y Amortización</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_7_es"/>
+        </record>
+        <record id="chart_73010_es" model="account.account.template">
+            <field name="code">73010</field>
+            
+            <field name="name">Depreciación</field>
+            <field name="type" ref="type_ifrs_depreciation_expenses_es"/>
+            <field name="parent" ref="chart_730_es"/>
+        </record>
+        <record id="chart_73020_es" model="account.account.template">
+            <field name="code">73020</field>
+            
+            <field name="name">Amortización</field>
+            <field name="type" ref="type_ifrs_depreciation_expenses_es"/>
+            <field name="parent" ref="chart_730_es"/>
+        </record>
+        <record id="chart_790_es" model="account.account.template">
+            <field name="code">790</field>
+            
+            <field name="name">Otros Gastos de Operación</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_7_es"/>
+        </record>
+        <record id="chart_79010_es" model="account.account.template">
+            <field name="code">79010</field>
+            
+            <field name="name">Otros Gastos de Operación</field>
+            <field name="type" ref="type_ifrs_other_operating_expense_es"/>
+            <field name="parent" ref="chart_790_es"/>
+        </record>
+
+        <!-- Other Expense -->
+
+        <record id="chart_8_es" model="account.account.template">
+            <field name="code">8</field>
+            
+            <field name="name">Otros Gastos</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_810_es" model="account.account.template">
+            <field name="code">810</field>
+            
+            <field name="name">Costos Financieros</field>
+            <field name="type" ref="type_ifrs_other_expense_es"/>
+            <field name="parent" ref="chart_8_es"/>
+        </record>
+        <record id="chart_820_es" model="account.account.template">
+            <field name="code">820</field>
+            
+            <field name="name">Gastos por Intereses</field>
+            <field name="type" ref="type_ifrs_other_expense_es"/>
+            <field name="parent" ref="chart_8_es"/>
+        </record>
+        <record id="chart_830_es" model="account.account.template">
+            <field name="code">830</field>
+            
+            <field name="name">Donaciones y Subsidios</field>
+            <field name="type" ref="type_ifrs_other_expense_es"/>
+            <field name="parent" ref="chart_8_es"/>
+        </record>
+        <record id="chart_840_es" model="account.account.template">
+            <field name="code">840</field>
+            
+            <field name="name">Impuestos Considerados Como Gasto</field>
+            <field name="type" ref="type_ifrs_other_expense_es"/>
+            <field name="parent" ref="chart_8_es"/>
+        </record>
+        <record id="chart_890_es" model="account.account.template">
+            <field name="code">890</field>
+            
+            <field name="name">Otros Gastos</field>
+            <field name="type" ref="type_ifrs_other_expense_es"/>
+            <field name="parent" ref="chart_8_es"/>
+        </record>
+
+        <!-- Tax Income -->
+
+        <record id="chart_9_es" model="account.account.template">
+            <field name="code">9</field>
+            
+            <field name="name">Impuesto a los Ingresos (Gasto)</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_0_es"/>
+        </record>
+        <record id="chart_910_es" model="account.account.template">
+            <field name="code">910</field>
+            
+            <field name="name">Impuesto a los Ingresos (Gasto)</field>
+            <field name="type" ref="type_ifrs_tax_income_es"/>
+            <field name="parent" ref="chart_9_es"/>
+        </record>
+    </data>
+</tryton>
