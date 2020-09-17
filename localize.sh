@@ -1,5 +1,5 @@
 #!/bin/bash
-# This file is part of account_stock_cos module.
+# This file is part of account_ifrs module.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license
 
